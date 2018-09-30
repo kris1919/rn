@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <React/RCTRootView.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];
+    
+    RCTRootView *rctView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation moduleName:@"RNIOS" initialProperties:nil launchOptions:nil];
+    
+    UIViewController *rootVC = [[UIViewController alloc] init];
+    
+    rootVC.view = rctView;
+    
+    self.window.rootViewController = rootVC;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
