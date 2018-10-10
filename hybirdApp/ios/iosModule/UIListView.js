@@ -2,21 +2,22 @@ import React from "react";
 import {FlatList,StyleSheet,Text,View,TouchableHighlight} from "react-native"
 
 import TextComponent from './TextComponent.js'
+import ViewComponent from './ViewComponent.js'
 
 export default class UIListView extends React.Component {
 	static defaultProps = {
 		data:[
-			{key:'a',title:'A'},
-			{key:'b',title:'B'},
-			{key:'c',title:'C'}
+			{key:'0',title:'Text',component:TextComponent},
+			{key:'1',title:'View',component:ViewComponent},
+			{key:'2',title:'Button',component:TextComponent}
 		]
 	}
 	_renderItem = (item) => {
-		var color = (item.index % 2 == 0) ? 'white' : 'white';
-		return 	<TouchableHighlight onPress={this._itemOnPress}>
+		var color = (item.index % 2 == 0) ? 'white' : '#ffffff';
+		return 	<TouchableHighlight onPress={this._itemOnPress.bind(this,item.item)}>
 					<View style={[styles.itemViewStyle,{backgroundColor:color}]}>
 						<Text style={styles.itemTextStyle}>
-						我是第{item.index}个item,我的key={item.item.key}
+							{item.item.title}
 						</Text>
 					</View>
 				</TouchableHighlight>
@@ -36,8 +37,8 @@ export default class UIListView extends React.Component {
 	}
 	_itemOnPress = (item) => {
 		this.props.navigator.push({
-			component:TextComponent,
-      		title: 'Text',
+			component:item.component,
+      		title: item.title
     	})
 	}
 	render() {
