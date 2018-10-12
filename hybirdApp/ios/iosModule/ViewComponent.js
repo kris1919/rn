@@ -18,7 +18,6 @@ export default class ViewComponent extends Component {
 
 					</View>
 
-
 					<View style={viewStyles.radiusView}>
 					
 					</View>

@@ -3,13 +3,18 @@ import {FlatList,StyleSheet,Text,View,TouchableHighlight} from "react-native"
 
 import TextComponent from './TextComponent.js'
 import ViewComponent from './ViewComponent.js'
+import ButtonComponent from './ButtonComponent.js'
+import ImageComponent from  './ImageComponent.js'
+import TextInputComponent from './TextInputComponent'
 
 export default class UIListView extends React.Component {
 	static defaultProps = {
 		data:[
 			{key:'0',title:'Text',component:TextComponent},
 			{key:'1',title:'View',component:ViewComponent},
-			{key:'2',title:'Button',component:TextComponent}
+			{key:'2',title:'Button',component:ButtonComponent},
+			{key:'3',title:'Image',component:ImageComponent},
+            {key:'4',title:'TextInput',component:TextInputComponent}
 		]
 	}
 	_renderItem = (item) => {
